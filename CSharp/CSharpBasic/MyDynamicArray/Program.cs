@@ -151,8 +151,38 @@ foreach (var item in myLinkedList)
     Console.WriteLine($"linked list item : {item}");
 }
 
+LinkedList<int> linkedList = new LinkedList<int>();
+
+
 #endregion
 
+#region Dictionary
+
+MyDictionary<string, int> myDictionary = new MyDictionary<string, int>();
+myDictionary.Add("Luke", 80);
+myDictionary.Add("Jason", 40);
+myDictionary.Add("Brend", 70);
+
+if(myDictionary.TryGetValue("Luke", out int value))
+{
+    Console.WriteLine($"Luke's score : {value}");
+}
+
+Console.WriteLine(myDictionary["Rachel"]);
+Console.WriteLine(myDictionary["Karl"]);
+
+Hashtable hashtable= new Hashtable();
+
+#endregion
+
+#region HashSet
+#endregion
+
+#region Queue
+#endregion
+
+#region Stack
+#endregion
 
 class Dummy : IComparable<Dummy>
 {
