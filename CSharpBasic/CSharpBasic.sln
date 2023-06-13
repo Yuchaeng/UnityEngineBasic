@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseballGame", "BaseballGam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardGame", "CardGame\CardGame.csproj", "{5D8FA960-8255-4A73-B2F0-72216492E7B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SutdaGame", "SutdaGame\SutdaGame.csproj", "{F19F9113-5255-4EDF-898C-1552AADCED3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SutdaGame", "SutdaGame\SutdaGame.csproj", "{F19F9113-5255-4EDF-898C-1552AADCED3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithm", "SortAlgorithm\SortAlgorithm.csproj", "{164F773A-B6D7-438E-B87E-5E37CB1763F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{F19F9113-5255-4EDF-898C-1552AADCED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19F9113-5255-4EDF-898C-1552AADCED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19F9113-5255-4EDF-898C-1552AADCED3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164F773A-B6D7-438E-B87E-5E37CB1763F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164F773A-B6D7-438E-B87E-5E37CB1763F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164F773A-B6D7-438E-B87E-5E37CB1763F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164F773A-B6D7-438E-B87E-5E37CB1763F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
