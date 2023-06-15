@@ -86,6 +86,98 @@ namespace SortAlgorithm
         }
         #endregion
 
+        #region Merge Sort
+        // 병합정렬
+        // O(NLogN) 최선 평균 최악 모두 시간복잡도 같음
+        // 공간복잡도 O(N) merge할 때마다 배열 새로 만들어야돼서 연산할 때 추가적인 공간 필요함, 공간 많이 잡아먹음
+        // Stable
+        public static void MergeSort(int[] arr)
+        {
+            MergeSort(arr, 0, arr.Length - 1);
+        }
+
+        public static void MergeSort(int[] arr, int start, int end)
+        {
+            if (start < end)
+            {
+                int mid = end + (start - end) / 2 - 1;  // == end/2 + start/2 == (start+end)/2  int끼리의 덧셈에서 오버플로우 방지용
+                MergeSort(arr, start, mid);
+                MergeSort(arr, mid + 1, end); //mid+1하니까 오버플로우 안뜸 
+
+                Merge(arr, start, mid, end);
+            }
+           
+        }
+
+        private static void Merge(int[] arr, int start, int mid, int end)
+        {
+            int[] origin = new int[end + 1];
+            for (int i = 0; i < end + 1; i++)
+            {
+                origin[i] = arr[i];
+            }
+
+            int part1 = start;
+            int part2 = mid + 1;
+            int tmp = start;
+
+            while (part1 <= mid && part2 <= end)
+            {
+                if (origin[part1] <= origin[part2])
+                {
+                    arr[tmp++] = origin[part1++];
+                    //part1++;
+                    //tmp++;
+                }
+                else
+                {
+                    arr[tmp++] = origin[part2++];
+                }
+            }
+
+            //남은 part1 들을 tmp 위치에 쭉 이어서 덮어쓴다
+
+            for (int i = 0; i < mid - part1; i++)
+            {
+                arr[tmp + i] = origin[part1 + i];
+            }
+        }
+        #endregion
+
+        #region Quick Sort
+
+        public static void QuickSort(int[] arr)
+        {
+            QuickSort(arr, 0, arr.Length - 1);
+        }
+
+        public static void QuickSort(int[] arr, int start, int end)
+        {
+            if (start < end)
+            {
+                int pivot = Partition(arr, start, end);
+                QuickSort(arr, start, pivot - 1); //pivot값은 pivot으로 정해진순간 고정됨 -> 배열 나눌 때 pivot 빼고 나눔
+                QuickSort(arr, pivot + 1, end);
+            }
+        }
+
+        private static int Partition(int[] arr, int start, int end)
+        {
+            int standard = arr[end + (start - end) / 2 - 1];  // == mid의 값
+
+            while (true)
+            {
+                while (arr[start] < standard) start++;
+                while (arr[end] > standard) end--;
+
+                if (start < end)
+                    Swap(ref arr[start], ref arr[end]);
+                else
+                    return end;
+            }
+        }
+        #endregion
+
         //그냥 int a, int b로 하면 값복사돼서 배열에선 안바뀜
         //배열의 값을 바꾸려면 배열의 요소의 주소를 참조해야함
 
