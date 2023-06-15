@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 int[] arr = { 1, 4, 3, 3, 9, 8, 7, 2, 5, 0 };
 Random random = new Random();
-//arr = Enumerable.Repeat(0,100000).Select(i => random.Next(0,100000)).ToArray();
+arr = Enumerable.Repeat(0,100).Select(i => random.Next(0,100)).ToArray();
 
 Stopwatch stopWatch = Stopwatch.StartNew();
 

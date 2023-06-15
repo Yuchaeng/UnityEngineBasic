@@ -163,7 +163,7 @@ namespace SortAlgorithm
 
         private static int Partition(int[] arr, int start, int end)
         {
-            int standard = arr[end + (start - end) / 2 - 1];  // == mid의 값
+            int standard = arr[end + (start - end) / 2];  // == mid의 값
 
             while (true)
             {
