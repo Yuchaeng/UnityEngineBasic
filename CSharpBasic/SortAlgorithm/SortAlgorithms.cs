@@ -145,7 +145,11 @@ namespace SortAlgorithm
         #endregion
 
         #region Quick Sort
-
+        //빠른 정렬
+        //Ω(NLogN)
+        //θ(NLogN)
+        //O(N^2) 최악, 근데 merge sort보다 빠르고 추가적인 공간 필요없음
+        //unstable
         public static void QuickSort(int[] arr)
         {
             QuickSort(arr, 0, arr.Length - 1);
@@ -174,6 +178,102 @@ namespace SortAlgorithm
                     Swap(ref arr[start], ref arr[end]);
                 else
                     return end;
+            }
+        }
+        #endregion
+
+        #region Heap Sort
+        //힙 정렬
+        //Heap 자료구조로 변환하여 정렬하는 방법
+        //한번 SIFT 연산할 때마다 Min 혹은 Max 값이 하나씩 고정됨
+        //트리 형태 구조 특성상 O(NLogN)의 시간복잡도를 가짐
+
+        public static void HeapSort(int[] arr)
+        {
+            // Max Heap 구조로 변환
+            //HeapifyBottomUp(arr);
+            HeapifyTopDown(arr);
+
+            InverseHeapify(arr);
+        }
+
+        //힙정렬된거를 오름차순으로 
+        public static void InverseHeapify(int[] arr)
+        {
+            int end = arr.Length - 1;
+            while (end > 0)
+            {
+                Swap(ref arr[0], ref arr[end]);
+                end--;
+                SIFT_Down(arr, end, 1);   //루트 다음꺼부터 넣어야 갱신됨
+            }
+        }
+
+        //O(N)
+        public static void HeapifyBottomUp(int[] arr)
+        {
+            int end = arr.Length - 1;
+            int current = end;
+
+            while (current >= 0)
+            {
+                SIFT_Down(arr, end, current--);
+            }
+        }
+
+        //O(NLogN)
+        public static void HeapifyTopDown(int[] arr)
+        {
+            int end = 1;
+            while (end < arr.Length)
+            {
+                SIFT_Up(arr, 0, end++);
+            }
+        }
+
+        //제일 마지막에 있는 노드를 가능할 때까지 위로 올림
+        public static void SIFT_Up(int[] arr, int root, int current)  //root, current, parent는 인덱스
+        {
+            int parent = (current - 1) / 2;
+            while (current > root)
+            {
+                if (arr[current] > arr[parent])
+                {
+                    Swap(ref arr[current], ref arr[parent]);
+                    current = parent;  //기존 parent자리로 갔으니까 기존 parent의 인덱스로 갱신
+                    parent = (current - 1) / 2;  //자리바꾸고 새로운 parent의 인덱스
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        //노드를 밑으로 내림
+        public static void SIFT_Down(int[] arr, int end, int current)
+        {
+            int parent = (current - 1) / 2;
+            while (current <= end)
+            {
+                //오른쪽 자식이 더 크면 오른쪽을 스왑
+                if(current + 1 <= end && arr[current] < arr[current + 1])
+                {
+                    current++;
+                }
+
+                //비교해서 바꾸는 로직
+                if (arr[current] > arr[parent])
+                {
+                    Swap(ref arr[current], ref arr[parent]);
+                    parent = current;
+                    current = parent * 2 + 1; //왼쪽 자식으로 감
+                }
+                else
+                {
+                    return;
+                }
+
             }
         }
         #endregion

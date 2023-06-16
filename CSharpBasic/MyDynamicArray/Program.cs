@@ -169,19 +169,50 @@ if(myDictionary.TryGetValue("Luke", out int value))
 }
 
 Console.WriteLine(myDictionary["Rachel"]);
-Console.WriteLine(myDictionary["Karl"]);
+//Console.WriteLine(myDictionary["Karl"]);
 
 Hashtable hashtable= new Hashtable();
+
+Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
 #endregion
 
 #region HashSet
+//중복된 값을 허용하고 싶지 않을 때 사용
+HashSet<int> numbers = new HashSet<int>();
+
+if (numbers.Add(1))
+{
+    Console.WriteLine("Added 1");
+}
+if (numbers.Add(1))
+{
+    Console.WriteLine("Add 1");
+}
 #endregion
 
 #region Queue
+//선입선출 (First in First out)
+Queue<int> queue = new Queue<int>();
+queue.Enqueue(1);
+queue.Enqueue(2);
+int first = queue.Dequeue();
+if (queue.Count > 0)
+{
+    Console.WriteLine(queue.Peek());
+    Console.WriteLine(first);
+}
 #endregion
 
 #region Stack
+//후입선출 (Last in First out)
+Stack<int> stack = new Stack<int>();
+stack.Push(3);
+if (stack.Count > 0)
+{
+    Console.WriteLine(stack.Peek());
+    stack.Pop();
+}
 #endregion
 
 class Dummy : IComparable<Dummy>
